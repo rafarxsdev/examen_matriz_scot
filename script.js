@@ -494,12 +494,25 @@ function sendEmailAutomatically() {
 // RENDERIZADO
 // ========================================
 function renderStudentDataScreen() {
+    const today = new Date();
+
+// Definir las opciones de formato
+const options = {
+    day: '2-digit',   // Formato de dos dígitos para el día (ej. 05)
+    month: '2-digit', // Formato de dos dígitos para el mes (ej. 10)
+    year: 'numeric'   // Formato numérico para el año (ej. 2025)
+};
+
+// Usar Intl.DateTimeFormat para aplicar el formato.
+// 'es-ES' (español de España) es una buena opción que usa el orden día/mes/año.
+const fechaActual = new Intl.DateTimeFormat('es-ES', options).format(today);
+
     return '<div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">' +
         '<div class="bg-white rounded-lg shadow-xl p-8 max-w-md w-full">' +
         '<div class="text-center mb-6"><h1 class="text-3xl font-bold text-gray-800 mb-2">Examen: Fundamentos y Aplicación de la Matriz SCOT</h1>' +
-        '<p class="text-gray-600">Parcial 2 10/10/2025</p></div>' +
+        '<p class="text-gray-600">' + fechaActual + '</p></div>' +
         '<div class="mb-6"><label class="block text-sm font-semibold text-gray-700 mb-2">Nombre completo:</label>' +
-        '<input type="text" id="student-name" placeholder="Juan Perez" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-500"></div>' +
+        '<input type="text" id="student-name" placeholder="Rafael Perez" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-500"></div>' +
         '<div class="mb-6"><label class="block text-sm font-semibold text-gray-700 mb-2">Numero de identificacion:</label>' +
         '<input type="text" id="student-id" placeholder="123456" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-500"></div>' +
         '<div class="space-y-4 mb-6">' +
